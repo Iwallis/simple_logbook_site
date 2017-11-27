@@ -1,0 +1,30 @@
+<%= error_messages_for(f.object) %>
+
+<% AGENCY_LIST = ['Transport Canada', 'FAA', 'JAA'] %>
+
+<table summary="User form fields">
+  <tr>
+    <th>First Name</th>
+    <td><%= f.text_field(:first_name) %></td>
+  </tr>
+  <tr>
+    <th>Last_name</th>
+    <td><%= f.text_field(:last_name) %></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td><%= f.text_field(:email) %></td>
+  </tr>
+  <tr>
+    <th>Password</th>
+    <td><%= password_field_tag(:password) %></td>
+  </tr>
+  <tr>
+    <th>License Number (if applicable)</th>
+    <td><%= f.check_box(:license_number) %></td>
+  </tr>
+  <tr>
+    <th>Licensing Agency (if licensed)</th>
+    <td><%= f.select(:licensing_agency, AGENCY_LIST) %></td>
+  </tr>
+</table>

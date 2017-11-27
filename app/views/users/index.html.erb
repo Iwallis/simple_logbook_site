@@ -1,2 +1,36 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<% @page_title = "All Users" %>
+
+<div class="users index">
+  <h2>Users</h2>
+  <!-- 'action new' and similar refer to the actions defined in the
+  UsersController -->
+  <%= link_to("Add New User", new_user_path, :class => 'action new') %>
+
+  <table class="listing" summary="User list">
+    <tr class="header">
+      <th class="center">#</th>
+      <th class="center">Name</th>
+      <th class="center">license number</th>
+      <th class="center">Email</th>
+      <th class="center">Admin?</th>
+      <th class="center">Date account was created</th>
+      <th class="center">options</th>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.first_name + ' ' + user.last_name %></td>
+      <td><%= user.license_number %></td>
+      <td><%= user.email %></td>
+      <td class="center"><%= status_tag(user.admin) %></td>
+      <td class="center"><%= user.created_at %></td>
+      <td class="actions">
+        <%= link_to("Show", user_path(user), :class => 'action show') %>
+        <%= link_to("Edit", edit_user_path(user), :class => 'action edit') %>
+        <%= link_to("Delete", delete_user_path(user), :class => 'action delete') %>
+        <%= link_to("Logbook", log_path(user.pilot_logbook), :class => 'action show') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

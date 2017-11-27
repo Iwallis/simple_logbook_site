@@ -1,2 +1,37 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= link_to("<< Back to List", users_path, :class => 'back-link')%>
+
+<div class= "users show">
+  <h2>Show user</h2>
+
+  <table summary="user detail view">
+    <tr>
+      <th>Name</th>
+      <td class="center"><%= @user.first_name + ' ' + @user.last_name %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td class="center"><%= @user.email %></td>
+    </tr>
+    <tr>
+      <th>License Number</th>
+      <td class="center"><%= !@user.license_number.blank? ? @user.license_number : "none" %></td>
+    </tr>
+    <tr>
+      <th>licensing_agency</th>
+      <td class="center"><%= !@user.licensing_agency.blank? ? @user.licensing_agency : "none" %></td>
+    </tr>
+    <tr>
+      <th>admin</th>
+      <td class="center"><%= status_tag(@user.admin) %></td>
+    </tr>
+    <tr>
+      <th>number of flights</th>
+      <td class="center"><%= !@user.pilot_logbook.blank? ? @user.pilot_logbook.flights.count : 0 %></td>
+    </tr>
+    <tr>
+      <th>Date account created</th>
+      <td class="center"><%= @user.created_at %></td>
+    </tr>
+  </table>
+
+</div>
