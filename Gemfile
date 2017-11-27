@@ -27,9 +27,14 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
+# Use ActiveModel has_secure_password
+# !!!!!!!! must use fix as follows: !!!!!!!!!!!!!!!!!!!
+  # in command prompt: "gem uninstall bycrypt"
+  # =>                 "gem install bcrypt --platform=ruby"
+gem 'bcrypt', '~> 3.1.7'
+# fix for coffee-script-source 1.9.0 + not working with windows
+gem 'coffee-script-source', '1.8.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
