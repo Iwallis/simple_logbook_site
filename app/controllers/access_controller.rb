@@ -7,6 +7,7 @@ class AccessController < ApplicationController
     # going to the database is expensive for page performance, so it's not
     # worth asking the database for just the username...
     @username = session[:username]
+    @admin = session[:admin]
   end
 
   def login
@@ -24,6 +25,7 @@ class AccessController < ApplicationController
     if authorized_user
       session[:user_id] = authorized_user.id
       session[:username] = authorized_user.first_name + " " + authorized_user.last_name
+      session[:admin] = authorized_user.admin
       flash[:notice] = "You are now logged in"
       redirect_to(admin_path)
     else

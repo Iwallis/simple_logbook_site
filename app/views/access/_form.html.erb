@@ -1,6 +1,6 @@
 <%= error_messages_for(f.object) %>
 
-<% agency_list = ['Transport Canada', 'FAA', 'JAA'] %>
+<!-- <% AGENCY_LIST2 = ['Transport Canada', 'FAA', 'JAA'] %> -->
 
 <table summary="User form fields">
   <tr>
@@ -17,7 +17,7 @@
   </tr>
   <tr>
     <th>Password</th>
-    <td><%= f.password_field(:password) %></td>
+    <td><%= password_field_tag(:password) %></td>
   </tr>
   <tr>
     <th>License Number (if applicable)</th>
@@ -25,6 +25,6 @@
   </tr>
   <tr>
     <th>Licensing Agency (if licensed)</th>
-    <td><%= f.select(:licensing_agency, agency_list) %></td>
+    <td><%= f.select(:licensing_agency, AGENCY_LIST) %></td>
   </tr>
 </table>

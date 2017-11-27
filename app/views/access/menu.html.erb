@@ -2,7 +2,8 @@
 
 <div class="menu">
   <h2>Admin Menu</h2>
-  <div class="identity">Logged in as: <%= @username %></div>
+  <div class="identity">Logged in as: <%= @username %><br>
+                        Admin Status: <%= @admin %></div>
   <ul>
     <li><%= link_to("Manage Users", users_path) %></li>
     <li><%= link_to("logout", access_logout_path) %></li>

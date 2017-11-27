@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   before_action :find_user, :only => [:show, :edit, :update, :delete, :destroy]
 
+  before_action :confirm_logged_in, :only => [:index, :show, :edit, :delete, :destroy]
 
   def new
     @user = User.new
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:notice] = 'The wizard that lives in this website created the
       user successfully!'
-      redirect_to(users_path)
+      redirect_to(access_login_path)
     else
       render('new')
     end
@@ -31,9 +32,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find_user(:id)
     if @user.update_attributes(user_params)
       flash[:notice] = 'The wizard that lives in the website successfully
       morphed the user! huzzah!'
@@ -45,9 +48,11 @@ class UsersController < ApplicationController
   end
 
   def delete
+    @user = User.find_user(:id)
   end
 
   def destroy
+    @user = User.find_user(:id)
     @user.destroy
     flash[:notice] = "The resident website wizard named Gondor the Lame
     destroyed '#{@user.name}' successfully with a powerful spell...it shan't
@@ -58,8 +63,15 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :license_number,
-      :licensing_agency, :email, :password, :admin, :last_log_in)
+    params.require(:user).permit(
+      :first_name,
+      :last_name,
+      :license_number,
+      :licensing_agency,
+      :email,
+      :password,
+      :admin,
+      :last_log_in)
   end
 
   def find_user
