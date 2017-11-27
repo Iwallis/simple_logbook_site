@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
   before_action :find_user, :only => [:show, :edit, :update, :delete, :destroy]
 
-  before_action :confirm_logged_in, :only => [:index, :show, :edit, :delete, :destroy]
+  before_action :confirm_logged_in, :only => [:show, :edit, :delete, :destroy]
+  before_action :confirm_admin_logged_in, :only => [:index]
 
   def new
     @user = User.new
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_user(:id)
+    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:notice] = 'The wizard that lives in the website successfully
       morphed the user! huzzah!'
@@ -48,11 +49,11 @@ class UsersController < ApplicationController
   end
 
   def delete
-    @user = User.find_user(:id)
+    @user = User.find(params[:id])
   end
 
   def destroy
-    @user = User.find_user(:id)
+    @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = "The resident website wizard named Gondor the Lame
     destroyed '#{@user.name}' successfully with a powerful spell...it shan't

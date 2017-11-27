@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
       # actions from occuring
     end
   end
+
+  def confirm_admin_logged_in
+    confirm_logged_in
+    unless session[:admin]
+      flash[:notice] = "Access Denied"
+      redirect_to(user_path(session[:user_id]))
+    end
+  end
 end
