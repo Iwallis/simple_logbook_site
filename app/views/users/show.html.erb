@@ -23,11 +23,7 @@
     <tr>
       <th>admin</th>
       <td class="center"><%= status_tag(@user.admin) %></td>
-    </tr>
-    <tr>
-      <th>number of flights</th>
-      <td class="center"><%= !@user.pilot_logbook.blank? ? @user.pilot_logbook.flights.count : 0 %></td>
-    </tr>
+    </tr>    
     <tr>
       <th>Date account created</th>
       <td class="center"><%= @user.created_at %></td>

@@ -1,0 +1,157 @@
+/* Primary stylesheet */
+
+/* Colors */
+$red: black;
+$green: #94B26F;
+$light_green: #B6D491;
+$yellow: grey;
+$dark_brown: white;
+$light_brown: black;
+$white: #FFFFFF;
+
+$animation_timing: 3s;
+
+$sans_serif: Verdana,Lucida,Arial,Helvetica,sans-serif;
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  width: 100%;
+  min-width: 980px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font: 20px $sans_serif;
+  color: $dark_brown;
+  text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+p, td, ul, ol, li, dl, dt, dd {
+  font-family: $sans_serif;
+}
+
+img { border: none;
+      opacity: 0;
+      animation: mymove $animation_timing;
+      animation-fill-mode: forwards;
+      animation_timing_function: ease-out;}
+
+table { border-collapse: collapse;
+        opacity: 0;
+        animation: mymove $animation_timing;
+        animation-fill-mode: forwards;
+        animation_timing_function: ease-out;
+        border: 5px solid black;
+      }
+
+table tr th, table tr td {
+  vertical-align: top;
+  text-align: left;
+  padding: 3px;
+  color: black;
+  background: grey;
+  text-shadow: none;
+  border: 2px solid black;
+}
+table tr td{
+  font-size: 14px
+}
+a, a:visited { color: black;
+               opacity: 0;
+               animation: mymove $animation_timing;
+               animation-fill-mode: forwards;
+               animation_timing_function: ease-out;}
+a:hover {}
+
+.clear { clear: both; }
+.center { text-align: center; }
+
+/* Structure */
+#header {
+  height: 4em;
+  padding-top: 1em;
+  text-align: center;
+  background: $red;
+  color: $white;
+  animation: textChange $animation_timing;
+
+  h1 { margin: 0; padding: 0; }
+}
+
+#main {
+  min-height: 800px;
+  background: $yellow image-url('bg1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  text-shadow: -1px 0 white, 0 2px white, 2px 0 white, 0 -1px white;
+}
+
+#navigation {
+  float: left;
+  width: 180px;
+  min-height: 480px;
+  padding: 10px;
+  background: $green;
+  color: $white;
+}
+
+#content { padding: 10px; }
+
+#footer {
+  clear: both;
+  height: 5.5em;
+  text-align: right;
+  background: $light_brown;
+  color: $yellow;
+
+  p {
+    margin: 0;
+    padding: 0.5em 1em;
+  }
+}
+
+/* Navigation */
+#navigation {
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      margin-bottom: 0.5em;
+    }
+    ul {
+      margin: 0.5em 0 0 1em;
+      font-size: 0.9em;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    padding: 1px 3px;
+    &:hover {
+      background: $yellow;
+    }
+  }
+
+}
+
+/* Content */
+#content h2 {
+  color: $light_brown;
+  opacity: 0;
+  animation: mymove $animation_timing;
+  animation-fill-mode: forwards;
+  animation_timing_function: ease-out;
+}
+
+@keyframes mymove {
+    100% {opacity: 1;}
+}
+
+@keyframes textChange {
+    from {color: black;}
+    to {color: white;}
+}

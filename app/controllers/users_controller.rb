@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -62,7 +63,7 @@ class UsersController < ApplicationController
   end
 
   def find_user
-    @users = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
 end
