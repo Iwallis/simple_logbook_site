@@ -3,7 +3,7 @@
 
 /* Structure */
 #content {
-  padding-left: 50px;
+  padding-left: 0px;
   padding-right: 50px;
   h2 {
     width: 100%;
@@ -85,9 +85,9 @@ a.action.large {
 
 .show {
   table {
-    clear: both; margin: 0 200px; width: 300px;
+    clear: both; margin: 0 10px;
     &.wide { width: 600px; margin: 0 50px; }
-    tr th { white-space: nowrap; padding-right: 5px; }
+    tr th { white-space: nowrap; padding-right: 1px; }
     tr td { border: 1px solid #666666; }
   }
 }

@@ -50,14 +50,17 @@ table { border-collapse: collapse;
 table tr th, table tr td {
   vertical-align: top;
   text-align: left;
-  padding: 3px;
+  padding: 10px;
   color: black;
   background: grey;
   text-shadow: none;
   border: 2px solid black;
 }
 table tr td{
-  font-size: 14px
+  font-size: 12px
+}
+table tr th {
+  font-size: 12px
 }
 a, a:visited { color: black;
                opacity: 0;
@@ -98,7 +101,7 @@ a:hover {}
   color: $white;
 }
 
-#content { padding: 10px; }
+#content { padding: 10px;}
 
 #footer {
   clear: both;

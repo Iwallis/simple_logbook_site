@@ -23,22 +23,77 @@
   </table>
 
   <table class="listing" summary="Flight list">
-    <tr class="header">
+    <tr class="top header">
+      <th class="center" colspan="6"></th>
+      <th class="center" colspan="4">Single Engine</th>
+      <th class="center" colspan="4">Multi Engine</th>
+      <th class="center" colspan="4">Instrument</th>
+      <th class="center" colspan="3">Cross Country</th>
+      <th class="center" colspan="1"></th>
+    </tr>
+    <tr class="bottom header">
       <th class="center">#</th>
       <th class="center">Date</th>
       <th class="center">Type</th>
       <th class="center">Ident</th>
       <th class="center">PIC</th>
       <th class="center">SIC</th>
+      <th class="center">Day PIC</th>
+      <th class="center">Day DUAL</th>
+      <th class="center">Night PIC</th>
+      <th class="center">Night DUAL</th>
+      <th class="center">Day PIC</th>
+      <th class="center">Day DUAL</th>
+      <th class="center">Night PIC</th>
+      <th class="center">Night DUAL</th>
+      <th class="center">Hood</th>
+      <th class="center">IMC</th>
+      <th class="center">Sim</th>
+      <th class="center"># IFR Approaches</th>
+      <th class="center">Day</th>
+      <th class="center">Night</th>
+      <th class="center">Route</th>
+      <th class="center">Comments</th>
     </tr>
     <% @user.logbook.flights.each do |flight| %>
     <tr>
+      <!-- ****** FLIGHT DETAILS ****** -->
       <td><%= flight.id %></td>
       <td><%= flight.date %></td>
       <td><%= flight.aircraft_type %></td>
       <td><%= flight.ident %></td>
       <td><%= flight.pic %></td>
       <td><%= flight.sic %></td>
+      <!-- ****** FLIGHT HOURS ****** -->
+      <!-- ****** SINGLE ENGINE ****** -->
+        <!-- ****** DAY PIC ****** -->
+      <td><%= !flight.dual_flight && flight.single_engine ? 0.0 : flight.day_hours %></td>
+        <!-- ****** DAY DUAL ****** -->
+      <td><%= !flight.dual_flight && flight.single_engine ? flight.day_hours : 0.0 %></td>
+        <!-- ****** NIGHT PIC ****** -->
+      <td><%= !flight.dual_flight && flight.single_engine ? 0.0 : flight.night_hours %></td>
+        <!-- ****** NIGHT DUAL ****** -->
+      <td><%= !flight.dual_flight && flight.single_engine ? flight.night_hours : 0.0 %></td>
+      <!-- ****** MULTI ENGINE ****** -->
+        <!-- ****** DAY PIC ****** -->
+      <td><%= flight.dual_flight && !flight.single_engine ? 0.0 : flight.day_hours %></td>
+        <!-- ****** DAY DUAL ****** -->
+      <td><%= flight.dual_flight && !flight.single_engine ? flight.day_hours : 0.0 %></td>
+        <!-- ****** NIGHT PIC ****** -->
+      <td><%= flight.dual_flight && !flight.single_engine ? 0.0 : flight.night_hours %></td>
+        <!-- ****** NIGHT DUAL ****** -->
+      <td><%= flight.dual_flight && !flight.single_engine ? flight.night_hours : 0.0 %></td>
+      <!-- ****** INSTRUMENT ****** -->
+      <td><%= flight.hood_hours %></td>
+      <td><%= flight.imc_hours %></td>
+      <td><%= flight.sim_hours %></td>
+      <td><%= flight.ifr_approaches %></td>
+      <!-- ****** CROSS COUNTRY ****** -->
+      <td><%= flight.cross_country ? flight.day_hours : 0.0 %></td>
+      <td><%= flight.cross_country ? flight.night_hours : 0.0 %></td>
+      <td><%= flight.route %></td>
+      <td><%= flight.comments %></td>
+
     <% end %>
   </table>
 </div>
