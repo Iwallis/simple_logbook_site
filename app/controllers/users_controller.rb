@@ -63,6 +63,14 @@ class UsersController < ApplicationController
     redirect_to(users_path)
   end
 
+  def logbook
+    if session[:user_id]
+      redirect_to(logbook_path(session[:user_id]))
+    else
+      redirect_to(access_login_path)
+    end
+  end
+
   private
 
   def user_params

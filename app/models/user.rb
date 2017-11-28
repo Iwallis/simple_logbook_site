@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
   has_secure_password
-  has_one :pilot_logbook
+  has_one :logbook
 
   scope :sorted, lambda { order("id ASC") }
 
@@ -19,5 +19,5 @@ class User < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
-  
+
 end

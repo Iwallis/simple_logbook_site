@@ -1,0 +1,45 @@
+<div class= "logbook show">
+  <h2>Logbook Summary</h2>
+
+  <table summary="logbook summary">
+    <tr>
+      <th>Pilot</th>
+      <td><%= @user.first_name + ' ' +
+                  @user.last_name %></td>
+    </tr>
+    <tr>
+      <th>number of flights</th>
+      <td><%= @user.logbook.flights.count %></td>
+    </tr>
+    <tr>
+      <th>last update</th>
+      <td><%= @user.logbook.updated_at %></td>
+    </tr>
+    <tr>
+      <th>Links</th>
+      <td class="actions">
+        <%= link_to("Edit", edit_logbook_path(@user.logbook), :class => 'action edit') %>
+        <%= link_to("Delete", delete_logbook_path(@user.logbook), :class => 'action delete') %>
+      </td>
+  </table>
+
+  <table class="listing" summary="Flight list">
+    <tr class="header">
+      <th class="center">#</th>
+      <th class="center">Date</th>
+      <th class="center">Type</th>
+      <th class="center">Ident</th>
+      <th class="center">PIC</th>
+      <th class="center">SIC</th>
+    </tr>
+    <% @user.logbook.flights.each do |flight| %>
+    <tr>
+      <td><%= flight.id %></td>
+      <td><%= flight.date %></td>
+      <td><%= flight.aircraft_type %></td>
+      <td><%= flight.ident %></td>
+      <td><%= flight.pic %></td>
+      <td><%= flight.sic %></td>
+    <% end %>
+  </table>
+</div>
