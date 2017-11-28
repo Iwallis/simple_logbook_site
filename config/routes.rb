@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'access/login'
   post 'access/attempt_login'
   get 'access/logout'
+  get '/denied', :to => redirect('/access-denied.html')
 
   resources :users do
       member do

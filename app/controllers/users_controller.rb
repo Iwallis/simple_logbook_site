@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   layout "admin"
 
-  before_action :find_user, :only => [:show, :edit, :update, :delete, :destroy]
-
-  before_action :confirm_logged_in, :only => [:show, :edit, :delete, :destroy]
+  # before_action :confirm_logged_in, :only => [:show, :edit, :delete, :destroy]
   before_action :confirm_admin_logged_in, :only => [:index]
+  # before_action :confirm_correct_user, :only => [:show, :edit, :delete, :destroy]
+  before_action :only => [:show, :edit, :delete, :destroy] do
+    confirm_correct_user(@user = User.find(params[:id]))
+  end
 
   def new
     @user = User.new
@@ -73,10 +75,6 @@ class UsersController < ApplicationController
       :password,
       :admin,
       :last_log_in)
-  end
-
-  def find_user
-    @user = User.find(params[:id])
   end
 
 end
