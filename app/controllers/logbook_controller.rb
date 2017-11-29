@@ -27,7 +27,8 @@ class LogbookController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])    
+    @user = User.find(session[:user_id])
+    @flight = Flight.new(flight_params)
   end
 
   # these are part of update
@@ -69,6 +70,13 @@ end
 
   def logbook_params
     params.require(:logbook).permit()
+  end
+
+  def flight_params
+    params.require(:flight).permit(:date, :type, :ident, :pic,
+      :sic, :single_engine?, :cross_country?, :dual_flight?, :day_hours,
+      :night_hours, :sim_hours, :imc_hours, :hood_hours, :ifr_approaches,
+      :route, :comments)
   end
 
 end

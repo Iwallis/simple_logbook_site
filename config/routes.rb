@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'access/logout'
   get '/denied', :to => redirect('/access-denied.html')
 
-  resources :flight do
+  resources :flights do
     member do
       get :delete
     end

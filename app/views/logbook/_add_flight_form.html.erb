@@ -1,0 +1,72 @@
+<%= error_messages_for(f.object) %>
+
+<table summary="Add flight form fields">
+  <tr>
+    <th>Date</th>
+    <td><%= f.date_field(:date) %></td>
+  </tr>
+  <tr>
+    <th>aircraft type</th>
+    <td><%= f.text_field(:aircraft_type) %></td>
+  </tr>
+  <tr>
+    <th>Ident</th>
+    <td><%= f.text_field(:ident) %></td>
+  </tr>
+  <tr>
+    <th>Pilot in Command</th>
+    <td><%= f.text_field(:pic) %></td>
+  </tr>
+  <tr>
+    <th>Co-Pilot/Second in Command</th>
+    <td><%= f.text_field(:sic) %></td>
+  </tr>
+  <tr>
+    <th>Type of Flight</th>
+    <td><%= f.radio_button(:dual_flight, "true") %><%= label_tag(:single_engine_true, "Dual")%>
+        <br><%= f.radio_button(:dual_flight, "false") %><%= label_tag(:single_engine_false, "Solo/PIC")%>
+    </td>
+  </tr>
+  <tr>
+    <th>Category of Plane</th>
+    <td><%= f.radio_button(:single_engine, "true") %><%= label_tag(:single_engine_true, "Single_engine")%>
+        <br><%= f.radio_button(:single_engine, "false") %><%= label_tag(:single_engine_false, "Multi-engine")%>
+    </td>
+  </tr>
+  <tr>
+    <th>Cross Country?</th>
+    <td><%= f.check_box(:cross_country) %><%= label_tag(:cross_country,"") %></td>
+  </tr>
+  <tr>
+    <th>Route</th>
+    <td><%= f.text_field(:route) %></td>
+  </tr>
+  <tr>
+    <th>Day Hours</th>
+    <td><%= f.number_field(:day_hours, step: 0.1) %></td>
+  </tr>
+  <tr>
+    <th>Night Hours</th>
+    <td><%= f.number_field(:night_hours, step: 0.1) %></td>
+  </tr>
+  <tr>
+    <th>Hood Hours</th>
+    <td><%= f.number_field(:hood_hours, step: 0.1) %></td>
+  </tr>
+  <tr>
+    <th>IMC Hours</th>
+    <td><%= f.number_field(:imc_hours, step: 0.1) %></td>
+  </tr>
+  <tr>
+    <th>Sim Hours</th>
+    <td><%= f.number_field(:sim_hours, step: 0.1) %></td>
+  </tr>
+  <tr>
+    <th># IFR Approaches</th>
+    <td><%= f.number_field(:ifr_approaches, in: 1..20, step: 1) %></td>
+  </tr>
+  <tr>
+    <th>Comments</th>
+    <td><%= f.text_area(:comments, size: "100x10") %></td>
+  </tr>
+</table>

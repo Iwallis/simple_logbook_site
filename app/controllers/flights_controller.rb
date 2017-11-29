@@ -1,4 +1,4 @@
-class FlightController < ApplicationController
+class FlightsController < ApplicationController
   layout 'admin'
 
   before_action do confirm_correct_user(@user = User.find(params[:id]))
@@ -32,7 +32,7 @@ class FlightController < ApplicationController
 
   def edit
     @flight = Flight.find(params[:id])
-    @flight_count = Flight.count    
+    @flight_count = Flight.count
   end
 
   def update
@@ -69,4 +69,5 @@ class FlightController < ApplicationController
       :night_hours, :sim_hours, :imc_hours, :hood_hours, :ifr_approaches,
       :route, :comments)
   end
+end
 end

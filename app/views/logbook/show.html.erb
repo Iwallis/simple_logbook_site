@@ -21,7 +21,19 @@
         <%= link_to("Delete", delete_logbook_path(@user.logbook), :class => 'action delete') %>
       </td>
   </table>
+  <div class="flight new">
+    <h2>Create new flight</h2>
 
+    <%= form_for(@flight) do |f| %>
+
+      <%= render(:partial => 'add_flight_form', :locals => {:f => f}) %>
+
+      <div class="form-buttons">
+        <%= f.submit("Create Flight") %>
+      </div>
+
+    <% end %>
+  </div>
   <table class="listing" summary="Flight list">
     <tr class="top header">
       <th class="center" colspan="6"></th>
